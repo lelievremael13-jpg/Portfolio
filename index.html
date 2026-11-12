@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maël Lelièvre – Portfolio, automotive photographer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Gilda+Display&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#DADADA; --ink:#2B2723; --head:#7A6A54; --body:#5B4F3E; --line:#BEBEBE;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1B1A18;--ink:#ECE8E1;--head:#BBAA90;--body:#C8C0B2;--line:#3B3833;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#1B1A18;--ink:#ECE8E1;--head:#BBAA90;--body:#C8C0B2;--line:#3B3833;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;font-size:1.05rem;line-height:1.65}
+a{color:var(--ink);text-underline-offset:.2em}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem)}
+h1,h2,h3{font-family:"Gilda Display",Georgia,"Times New Roman",serif;font-weight:400;color:var(--head);margin:0}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.25rem 2rem;padding-top:1.5rem;padding-bottom:1.5rem}
+.mark{font-weight:500;color:var(--ink);font-size:.95rem}
+header nav{display:flex;gap:1.25rem}
+header a{text-decoration:none;font-size:.95rem;color:var(--ink);font-weight:500}
+header a:hover{text-decoration:underline}
+figure{margin:0}
+img{display:block;width:100%;height:auto}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(1.5rem,5vw,4rem);align-items:center;padding-top:1rem;padding-bottom:clamp(3rem,8vw,6rem)}
+.hero h1{font-size:clamp(3.2rem,8vw,6.6rem);line-height:.95;letter-spacing:-.01em;color:var(--ink)}
+.hero h1 span{display:block}
+.role{margin:1.25rem 0 2rem;font-size:1.25rem}
+.contact-lines{margin:0;font-weight:500}
+.contact-lines a{text-decoration:none;border-bottom:1px solid var(--line)}
+.contact-lines a:hover{border-color:var(--ink)}
+section{padding:clamp(2.5rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(1.5rem,5vw,4rem);align-items:start}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 1.5rem)}
+h2{font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1}
+.side h2{margin-bottom:1.25rem}
+.side p{margin:0 0 1rem;max-width:40ch}
+h3{font-size:clamp(1.5rem,3vw,2rem);margin:clamp(2.5rem,6vw,4rem) 0 1rem}
+h3:first-of-type{margin-top:0}
+.row{display:flex;gap:clamp(.6rem,1.4vw,1.1rem);margin-bottom:clamp(.6rem,1.4vw,1.1rem)}
+.row figure{flex:var(--r) 1 0;min-width:0}
+.row img{aspect-ratio:var(--r);object-fit:cover}
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.4vw,1.1rem);margin-top:clamp(.6rem,1.4vw,1.1rem)}
+.work img{aspect-ratio:2/3;object-fit:cover}
+.collage{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.6rem,1.4vw,1.1rem)}
+.collage figure:nth-child(1){grid-column:1/3;grid-row:1/3;position:relative}
+.collage figure:nth-child(1) img{position:absolute;inset:0;height:100%}
+.collage figure:nth-child(2){grid-column:3}.collage figure:nth-child(3){grid-column:4}
+.collage figure:nth-child(4){grid-column:3/5}
+.collage img{object-fit:cover}
+.collage figure:nth-child(2) img,.collage figure:nth-child(3) img{aspect-ratio:.68}
+.collage figure:nth-child(4) img{aspect-ratio:var(--r)}
+.contact-block{margin:2rem 0}
+.contact-block p{margin:0 0 1rem}
+.contact-block strong{display:block;color:var(--ink);font-weight:500}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;font-size:.85rem}
+@media (max-width:820px){
+  .hero,.split{grid-template-columns:1fr}
+  .side{position:static}
+  .collage{grid-template-columns:1fr 1fr}
+  .collage figure:nth-child(1){grid-column:1/-1;grid-row:auto;position:static}
+  .collage figure:nth-child(1) img{position:static;height:auto;aspect-ratio:4/5}
+  .collage figure:nth-child(2){grid-column:1}.collage figure:nth-child(3){grid-column:2}
+  .collage figure:nth-child(4){grid-column:1/-1}
+  .hero figure{order:-1}
+  .row{display:grid;grid-template-columns:1fr 1fr}
+  .row figure.land{grid-column:1/-1}
+  .row figure:not(.land) img{aspect-ratio:2/3}
+}
+@media (max-width:520px){.work{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <span class="mark">Portfolio</span>
+  <nav aria-label="Main"><a href="#work">Work</a><a href="#series">Series</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<main>
+  <div class="wrap hero" id="top">
+    <div>
+      <h1><span>Maël</span><span>LELIÈVRE</span></h1>
+      <p class="role">Automotive photographer</p>
+      <p class="contact-lines">
+        <a href="mailto:lelievre.mael13@gmail.com">lelievre.mael13@gmail.com</a><br>
+        <a href="https://www.instagram.com/fromthe_eyesof_mael" rel="noopener">@fromthe_eyesof_mael</a>
+      </p>
+    </div>
+    <figure style="--r:1.167"><img src="images/photo-01.jpg" alt="Porsche 918 Spyder in warm evening light" decoding="async"></figure>
+  </div>
+
+  <section id="work"><div class="wrap split">
+    <div class="side">
+      <h2>Work</h2>
+      <p>I’ve already worked with dealerships such as Deal&amp;Drive and FactoryAutomobiles.</p>
+      <p>I also shoot events and private commissions.</p>
+    </div>
+    <div>
+      <div class="row"><figure style="--r:0.666"><img src="images/photo-02.jpg" alt="Aston Martins inside a classic car workshop" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.783"><img src="images/photo-03.jpg" alt="Mercedes 300 SL with gullwing doors open" loading="lazy" decoding="async"></figure></div>
+      <div class="work"><figure style="--r:0.666"><img src="images/photo-04.jpg" alt="Porsche Cayenne driving on a country road" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-05.jpg" alt="Porsche Cayenne interior with red leather" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-06.jpg" alt="Porsche crest and key on a blue bonnet" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-07.jpg" alt="Mercedes-AMG in matte black outside a dealership" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-08.jpg" alt="Mercedes dashboard vents and carbon trim" loading="lazy" decoding="async"></figure><figure style="--r:0.667"><img src="images/photo-09.jpg" alt="Mercedes star badge on a dark green bonnet" loading="lazy" decoding="async"></figure></div>
+    </div>
+  </div></section>
+
+  <section id="series"><div class="wrap">
+    <h2 style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">Series</h2>
+    <h3>Ferrari 308 GTB</h3>
+    <div class="row"><figure style="--r:0.663"><img src="images/photo-10.jpg" alt="Ferrari 308 GTB in front of a stone tower" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-11.jpg" alt="Ferrari 308 GTB steering wheel" loading="lazy" decoding="async"></figure><figure style="--r:0.663"><img src="images/photo-12.jpg" alt="Ferrari prancing horse badge" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-13.jpg" alt="Ferrari 308 GTB on a forest road" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-14.jpg" alt="Black and white tower with 308 GTB tail light" loading="lazy" decoding="async"></figure><figure style="--r:0.664"><img src="images/photo-15.jpg" alt="Ferrari script on the bodywork" loading="lazy" decoding="async"></figure><figure style="--r:0.662"><img src="images/photo-16.jpg" alt="Ferrari 308 GTB pop-up headlight" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.501"><img src="images/photo-17.jpg" alt="Ferrari 308 GTB seen from behind" loading="lazy" decoding="async"></figure></div>
+    <h3>BMW M5 E60</h3>
+    <div class="row"><figure style="--r:0.663"><img src="images/photo-18.jpg" alt="Black BMW M5 in an industrial yard" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-19.jpg" alt="BMW M5 wheel with yellow caliper" loading="lazy" decoding="async"></figure><figure style="--r:0.663"><img src="images/photo-20.jpg" alt="BMW M5 tachometer" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-21.jpg" alt="BMW M5 front three-quarter view" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-22.jpg" alt="BMW M5 head-on" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-23.jpg" alt="M5 badge and tail light" loading="lazy" decoding="async"></figure><figure style="--r:0.662"><img src="images/photo-24.jpg" alt="BMW M5 bonnet and headlight" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-25.jpg" alt="BMW M5 inside a derelict hangar" loading="lazy" decoding="async"></figure></div>
+    <h3>Porsche 911 GT3 RS</h3>
+    <div class="row"><figure style="--r:0.663"><img src="images/photo-26.jpg" alt="Porsche 911 GT3 RS in the grass" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.498"><img src="images/photo-27.jpg" alt="GT3 RS wheel and side stripe" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.499"><img src="images/photo-28.jpg" alt="GT3 RS rear wing" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-29.jpg" alt="Porsche key held in a hand" loading="lazy" decoding="async"></figure><figure style="--r:0.664"><img src="images/photo-30.jpg" alt="GT3 RS in evening light" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.501"><img src="images/photo-31.jpg" alt="GT3 RS parked in a clearing" loading="lazy" decoding="async"></figure></div>
+  </div></section>
+
+  <section id="about"><div class="wrap split">
+    <div class="side">
+      <h2>About</h2>
+      <p>I’m an 18-year-old photographer, passionate about cars since I was born. I’ve been fully committed to photography since 2022 and haven’t stopped since.</p>
+      <p>I shoot with a Sony A7 IV and photograph all types of cars, including classics, supercars and JDM.</p>
+      <p>I love photography: I’m always meeting extraordinary people, making new friends, and seeing incredible cars that leave me with unforgettable memories.</p>
+    </div>
+    <div><div class="row"><figure style="--r:0.664"><img src="images/photo-32.jpg" alt="Mercedes SLR McLaren on a sandy track" loading="lazy" decoding="async"></figure><figure style="--r:0.665"><img src="images/photo-33.jpg" alt="Lamborghini Huracán STO at a car meet" loading="lazy" decoding="async"></figure></div></div>
+  </div></section>
+
+  <section id="contact"><div class="wrap split">
+    <div class="side">
+      <h2>Contact me</h2>
+      <p>If you have any questions or a special request, get in touch through the links below. I hope you enjoyed my pictures and that we’ll work together!</p>
+      <div class="contact-block">
+        <p><strong>Instagram</strong><a href="https://www.instagram.com/fromthe_eyesof_mael" rel="noopener">@fromthe_eyesof_mael</a></p>
+        <p><strong>Email</strong><a href="mailto:lelievre.mael13@gmail.com">lelievre.mael13@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="collage"><figure style="--r:0.666"><img src="images/photo-34.jpg" alt="White Porsche 356 Speedster" loading="lazy" decoding="async"></figure><figure style="--r:0.704"><img src="images/photo-35.jpg" alt="BMW 6 Series coupe in a meadow" loading="lazy" decoding="async"></figure><figure style="--r:0.667"><img src="images/photo-36.jpg" alt="Black and white Porsche 911 with open bonnet" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.509"><img src="images/photo-37.jpg" alt="Pink BMW M3 on a hilltop" loading="lazy" decoding="async"></figure></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">Portfolio of Maël Lelièvre, automotive photographer. © 2026, all rights reserved.</div></footer>
+</body>
+</html>
