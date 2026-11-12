@@ -77,8 +77,13 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;font-size:.85rem}
   .row figure:not(.land) img{aspect-ratio:2/3}
 }
 @media (max-width:520px){.work{grid-template-columns:1fr 1fr}}
+
+/* Apparition au défilement (désactivée si l'appareil demande moins de mouvement) */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js")}catch(e){}</script>
 </head>
 <body>
 <header class="wrap">
@@ -115,10 +120,10 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;font-size:.85rem}
     <h2 style="margin-bottom:clamp(1.5rem,3vw,2.5rem)">Series</h2>
     <h3>Ferrari 308 GTB</h3>
     <div class="row"><figure style="--r:0.663"><img src="images/photo-10.jpg" alt="Ferrari 308 GTB in front of a stone tower" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-11.jpg" alt="Ferrari 308 GTB steering wheel" loading="lazy" decoding="async"></figure><figure style="--r:0.663"><img src="images/photo-12.jpg" alt="Ferrari prancing horse badge" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-13.jpg" alt="Ferrari 308 GTB on a forest road" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-14.jpg" alt="Black and white tower with 308 GTB tail light" loading="lazy" decoding="async"></figure><figure style="--r:0.664"><img src="images/photo-15.jpg" alt="Ferrari script on the bodywork" loading="lazy" decoding="async"></figure><figure style="--r:0.662"><img src="images/photo-16.jpg" alt="Ferrari 308 GTB pop-up headlight" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.501"><img src="images/photo-17.jpg" alt="Ferrari 308 GTB seen from behind" loading="lazy" decoding="async"></figure></div>
-    <h3>BMW M5 E60</h3>
-    <div class="row"><figure style="--r:0.663"><img src="images/photo-18.jpg" alt="Black BMW M5 in an industrial yard" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-19.jpg" alt="BMW M5 wheel with yellow caliper" loading="lazy" decoding="async"></figure><figure style="--r:0.663"><img src="images/photo-20.jpg" alt="BMW M5 tachometer" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-21.jpg" alt="BMW M5 front three-quarter view" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-22.jpg" alt="BMW M5 head-on" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-23.jpg" alt="M5 badge and tail light" loading="lazy" decoding="async"></figure><figure style="--r:0.662"><img src="images/photo-24.jpg" alt="BMW M5 bonnet and headlight" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-25.jpg" alt="BMW M5 inside a derelict hangar" loading="lazy" decoding="async"></figure></div>
     <h3>Porsche 911 GT3 RS</h3>
     <div class="row"><figure style="--r:0.663"><img src="images/photo-26.jpg" alt="Porsche 911 GT3 RS in the grass" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.498"><img src="images/photo-27.jpg" alt="GT3 RS wheel and side stripe" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.499"><img src="images/photo-28.jpg" alt="GT3 RS rear wing" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-29.jpg" alt="Porsche key held in a hand" loading="lazy" decoding="async"></figure><figure style="--r:0.664"><img src="images/photo-30.jpg" alt="GT3 RS in evening light" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.501"><img src="images/photo-31.jpg" alt="GT3 RS parked in a clearing" loading="lazy" decoding="async"></figure></div>
+    <h3>BMW M5 E60</h3>
+    <div class="row"><figure style="--r:0.663"><img src="images/photo-18.jpg" alt="Black BMW M5 in an industrial yard" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-19.jpg" alt="BMW M5 wheel with yellow caliper" loading="lazy" decoding="async"></figure><figure style="--r:0.663"><img src="images/photo-20.jpg" alt="BMW M5 tachometer" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-21.jpg" alt="BMW M5 front three-quarter view" loading="lazy" decoding="async"></figure></div><div class="row"><figure style="--r:0.662"><img src="images/photo-22.jpg" alt="BMW M5 head-on" loading="lazy" decoding="async"></figure><figure style="--r:0.666"><img src="images/photo-23.jpg" alt="M5 badge and tail light" loading="lazy" decoding="async"></figure><figure style="--r:0.662"><img src="images/photo-24.jpg" alt="BMW M5 bonnet and headlight" loading="lazy" decoding="async"></figure><figure class="land" style="--r:1.504"><img src="images/photo-25.jpg" alt="BMW M5 inside a derelict hangar" loading="lazy" decoding="async"></figure></div>
   </div></section>
 
   <section id="about"><div class="wrap split">
@@ -145,5 +150,22 @@ footer{border-top:1px solid var(--line);padding:1.5rem 0 2rem;font-size:.85rem}
 </main>
 
 <footer><div class="wrap">Portfolio of Maël Lelièvre, automotive photographer. © 2026, all rights reserved.</div></footer>
+<script>
+(function(){
+  if(!document.documentElement.classList.contains("js")) return;
+  var els=[].slice.call(document.querySelectorAll("h2, h3, .side p, .contact-block, figure"));
+  els.forEach(function(el){
+    el.classList.add("reveal");
+    var sib=el.parentElement?[].slice.call(el.parentElement.children).filter(function(c){return c.tagName===el.tagName}):[];
+    var k=Math.max(0,sib.indexOf(el));
+    el.style.setProperty("--d",(Math.min(k,5)*0.09)+"s");
+  });
+  if(!("IntersectionObserver" in window)){els.forEach(function(el){el.classList.add("in")});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+  },{rootMargin:"0px 0px -8% 0px",threshold:0.08});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
 </body>
 </html>
